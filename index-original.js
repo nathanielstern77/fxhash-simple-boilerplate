@@ -2,7 +2,7 @@
 console.log(fxhash)   // the 64 chars hex number fed to your algorithm
 console.log(fxrand()) // deterministic PRNG function, use it instead of Math.random()
 
-// note about the fxrand() function
+// note about the fxrand() function 
 // when the "fxhash" is always the same, it will generate the same sequence of
 // pseudo random numbers, always
 
@@ -20,42 +20,10 @@ console.log(fxrand()) // deterministic PRNG function, use it instead of Math.ran
 //   "Inverted": true
 // }
 
-// FH_HASH p5 template | @visiophone_lab
-// www.visiophone-lab.com
-
-let seed = 0; //seed Hash
-let sizee = 0; // rect size
-let col = 0; //color
-
-
-function setup() {
-
-  createCanvas(windowWidth, windowHeight);
-
-
-  col=int(fxrand()*255);
-  sizee=int(fxrand()*(width/2));
-
-// FX Features
-  window.$fxhashFeatures = {
- "Size" : sizee,
- "Color" : col,
-  };
-
-}
-
-function draw() {
-  background(255);
-
-stroke(0);
-fill(col);
-
-rectMode(CENTER);
-rect(width/2,height/2,sizee,sizee);
-
-}
-
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+// this code writes the values to the DOM as an example
+const container = document.createElement("div")
+container.innerText = `
+  random hash: ${fxhash}\n
+  some pseudo random values: [ ${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()},... ]\n
+`
+document.body.prepend(container)
