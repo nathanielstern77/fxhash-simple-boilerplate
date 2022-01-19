@@ -43,11 +43,6 @@ let srcStarty=[];
 let srcWid=[];
 let img = [];
 let srcHt = [];
-let rare = [];
-let dirx = [];
-let diry = [];
-let scalex = [];
-let scaley = [];
 let NumSlices;
 
 function preload() {
@@ -61,20 +56,11 @@ function preload() {
   srcStarty[i] = int(fxrand() *img[i].height*.25);
   srcWid[i] = int((fxrand() *(30000/img[i].width)));
   srcHt[i] = int(img[i].height * ((fxrand() * .65) + .25));
-  let myRare = fxrand();
-  if (myRare < .5) {
-    rare[i]=true;
-    dirx[i] = int(fxrand()*50)-25;
-    diry[i] = int(fxrand()*50)-25;
-    scalex[i] = int(fxrand()*50)-25;
-    scaley[i] = int(fxrand()*50)-25;
-  }
 }}
 
 
 function setup() {
-  frameRate(30);
-background(0);
+background(128);
   createCanvas(windowWidth, windowHeight);
 
 startx[NumSlices]=0;
@@ -98,8 +84,7 @@ wid[NumSlices] = (fxrand()*.4)+.001;
 // "Size" : sizee,
  //"Color" : col,
   };
-fill(0);
-rect(0,0,width,height);
+
 }
 
 function draw() {
@@ -131,51 +116,12 @@ rect(width/2,height/2,sizee,sizee); */
 
   for(i = 0; i < NumSlices+1; i++){
 
-    if (rare[i]==true) {
-      if (dirx[i] > 0) {
-        dirx[i] = dirx[i] - 1;
-        srcStartx[i] = srcStartx[i] + fxrand()*2;
-      } else if (dirx[i] < 0) {
-        dirx[i] = dirx[i] + 1;
-        srcStartx[i] = srcStartx[i] + fxrand()*-2.;
-      } else { dirx[i] = int(fxrand()*50)-25; }
-
-  /*    if (diry[i] > 0) {
-        diry[i] = diry[i] - 1;
-        srcStarty[i] = srcStarty[i] + fxrand()*2;
-      } else if (diry[i] < 0) {
-        diry[i] = diry[i] + 1;
-        srcStarty[i] = srcStarty[i] + fxrand()*-2.;
-      } else { diry[i] = int(fxrand()*50-25); }
-
-
-      if (scalex[i] > 0) {
-        scalex[i] = scalex[i] - 1;
-        srcWid[i] = srcWid[i] + fxrand()*15.;
-      } else if (scalex[i] < 0) {
-        scalex[i] = scalex[i] + 1;
-        srcWid[i] = srcWid[i] + fxrand()*-15.;
-      } else { scalex[i] = int(fxrand()*50-25) }
-
-
-      if (scaley[i] > 0) {
-        scaley[i] = scaley[i] - 1;
-        srcHt[i] = srcHt[i] + (fxrand()*5.);
-      } else if (scaley[i] < 0) {
-        scaley[i] = scaley[i] + 1;
-        srcHt[i] = srcHt[i] + fxrand()*-5.;
-      } else { scaley[i] = int(fxrand()*50-25); }
-
-*/
-    }
-
-image(img[i], startx[i]*width, 0, wid[i]*width, height, srcStartx[i], srcStarty[i], srcWid[i]*wid[i], srcHt[i]*height);
+image(img[i], startx[i]*width, 0, wid[i]*width, height, srcStartx[i], srcStarty[i], srcWid[i]*.5*wid[i], srcHt[i]);
   }
 }
 
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  fill(0);
-  rect(0,0,width,height);
+
 }
