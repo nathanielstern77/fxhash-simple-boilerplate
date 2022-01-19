@@ -62,7 +62,7 @@ function preload() {
   srcWid[i] = int((fxrand() *(30000/img[i].width)));
   srcHt[i] = int(img[i].height * ((fxrand() * .65) + .25));
   let myRare = fxrand();
-  if (myRare < .5) {
+  if (myRare < .1) {
     rare[i]=true;
     dirx[i] = int(fxrand()*50)-25;
     diry[i] = int(fxrand()*50)-25;
@@ -140,7 +140,7 @@ rect(width/2,height/2,sizee,sizee); */
         srcStartx[i] = srcStartx[i] + fxrand()*-2.;
       } else { dirx[i] = int(fxrand()*50)-25; }
 
-  /*    if (diry[i] > 0) {
+      if (diry[i] > 0) {
         diry[i] = diry[i] - 1;
         srcStarty[i] = srcStarty[i] + fxrand()*2;
       } else if (diry[i] < 0) {
@@ -166,7 +166,7 @@ rect(width/2,height/2,sizee,sizee); */
         srcHt[i] = srcHt[i] + fxrand()*-5.;
       } else { scaley[i] = int(fxrand()*50-25); }
 
-*/
+
     }
 
 image(img[i], startx[i]*width, 0, wid[i]*width, height, srcStartx[i], srcStarty[i], srcWid[i]*wid[i], srcHt[i]*height);
